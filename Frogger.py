@@ -1,6 +1,4 @@
 '''
-Author: Ze Hao Su
-
 Date: May 30, 2018
 
 Description: This game is a copy of the original 1981 arcade game called Frogger. The
