@@ -6,7 +6,7 @@ Date: May 30, 2018
 Description: This module includes all the classes necessary to create the game 
              Frogger
 '''
-
+import os
 import pygame, random
 
 class Background(pygame.sprite.Sprite):
@@ -15,7 +15,7 @@ class Background(pygame.sprite.Sprite):
     def __init__(self, screen):
         '''This update method just displays the image'''
         pygame.sprite.Sprite.__init__(self)  
-        self.image = pygame.image.load("background.jpg")
+        self.image = pygame.image.load(os.path.join("images","background.jpg"))
         self.rect = self.image.get_rect()
         
 class Player(pygame.sprite.Sprite):
@@ -35,7 +35,7 @@ class Player(pygame.sprite.Sprite):
         
         #Sets up the starting image
         self.__image_reset = self.__image_list[0]
-        self.image = pygame.image.load(self.__image_list[0])
+        self.image = pygame.image.load(os.path.join("images", self.__image_list[0]))
         self.image.convert()
         self.__screen = screen
         
@@ -53,7 +53,7 @@ class Player(pygame.sprite.Sprite):
         self.__dx -= 8
         self.__moving = True
         self.__image_reset = self.__image_list[2]
-        self.image = pygame.image.load(self.__image_list[3])         
+        self.image = pygame.image.load(os.path.join("images", self.__image_list[3]))        
         
     def go_right(self):
         '''This method allows the player to move to the right and change the 
@@ -61,7 +61,7 @@ class Player(pygame.sprite.Sprite):
         self.__dx += 8
         self.__moving = True
         self.__image_reset = self.__image_list[6]
-        self.image = pygame.image.load(self.__image_list[7])         
+        self.image = pygame.image.load(os.path.join("images", self.__image_list[7]))     
       
     def go_up(self):
         '''This method allows the player to move to the up and change the 
@@ -69,7 +69,7 @@ class Player(pygame.sprite.Sprite):
         self.__dy -= 8
         self.__moving = True
         self.__image_reset = self.__image_list[0]
-        self.image = pygame.image.load(self.__image_list[1])        
+        self.image = pygame.image.load(os.path.join("images", self.__image_list[1]))        
 
     def go_down(self):
         '''This method allows the player to move to the down and change the 
@@ -77,7 +77,7 @@ class Player(pygame.sprite.Sprite):
         self.__dy += 8
         self.__moving = True
         self.__image_reset = self.__image_list[4]
-        self.image = pygame.image.load(self.__image_list[5])         
+        self.image = pygame.image.load(os.path.join("images", self.__image_list[5]))        
         
     def get_movement(self):
         '''This method return the boolean value that checks if the player
@@ -137,7 +137,7 @@ class Player(pygame.sprite.Sprite):
         #If the player has moved 32 pixels then it stops moving and changes its
         #image accordingly
         if self.__displacement % 32 == 0:
-            self.image = pygame.image.load(self.__image_reset)
+            self.image = pygame.image.load(os.path.join("images", self.__image_reset))
             self.reset_movement() 
         
 class Log(pygame.sprite.Sprite):
@@ -148,13 +148,12 @@ class Log(pygame.sprite.Sprite):
     def __init__(self, row, speed, screen):
         '''This initializer method initializes the basic instance variables
         suchs as image lists, image, rect, and speed'''        
-        
         pygame.sprite.Sprite.__init__(self)
         #Loads the image lists
         self.__image_list = []
         for index in range(2):
-            self.__image_list.append("log" + str(index) + ".png")        
-        self.image = pygame.image.load(self.__image_list[random.randint(0,1)])
+            self.__image_list.append("log" + str(index) + ".png")   
+        self.image = pygame.image.load(os.path.join("images", self.__image_list[random.randint(0,1)]))
         
         #Sets the image and locations
         self.rect = self.image.get_rect()
@@ -198,7 +197,7 @@ class Turtle(pygame.sprite.Sprite):
         for index in range(8):
             self.__image_list.append("turtle" + str(index) + ".png")
         #Sets the starting image
-        self.image = pygame.image.load(self.__image_list[0])
+        self.image = pygame.image.load(os.path.join("images", self.__image_list[0]))
         self.__current_image = 0
         
         #Sets the location and speed
@@ -270,7 +269,7 @@ class Turtle(pygame.sprite.Sprite):
         #If the turtle if diving, the turtle loops through 8 images
         elif self.__current_image >= 8:
             self.__current_image = 0
-        self.image = pygame.image.load(self.__image_list[self.__current_image])
+        self.image = pygame.image.load(os.path.join("images", self.__image_list[self.__current_image]))
 
 
 class Car(pygame.sprite.Sprite):
@@ -289,7 +288,7 @@ class Car(pygame.sprite.Sprite):
             self.__image_list.append("car" + str(index) + ".png")   
         
         #sets the starting image and and starting location
-        self.image = pygame.image.load(self.__image_list[random.randint(0,3)])
+        self.image = pygame.image.load(os.path.join("images", self.__image_list[random.randint(0,3)]))
         self.rect = self.image.get_rect()
         self.rect.top = 32 * (13 - row)
         
@@ -428,7 +427,7 @@ class Goal(pygame.sprite.Sprite):
         for the player to take. Takes no parameters and does not return
         anything'''
         self.__taken = True
-        self.image = pygame.image.load("frog0.png")
+        self.image = pygame.image.load(os.path.join("images", "frog0.png"))
         self.rect.centerx = (128 * self.__row) + 22
         
     def get_taken(self):

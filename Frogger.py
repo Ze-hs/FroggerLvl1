@@ -9,6 +9,7 @@ reaches his goal, some extra time will be alloted
 '''
 
 # Import and Initialize
+import os
 import pygame, FroggerSprites, random
 pygame.init()
 pygame.mixer.init()
@@ -19,19 +20,19 @@ def main():
     pygame.display.set_caption("Frogger!!!")
     
     #Entity
-    background = pygame.image.load("Frogger3d.jpg")
+    background = pygame.image.load(os.path.join("images", "Frogger3d.jpg"))
     background.convert()
     screen.blit(background, (0,0))
     
     #Loads all the music and sound effects
-    pygame.mixer.music.load("background_music.ogg")
+    pygame.mixer.music.load(os.path.join("music", "background_music.ogg"))
     pygame.mixer.music.set_volume(.5)
     pygame.mixer.music.play(-1)
-    hop = pygame.mixer.Sound("hop.ogg")
+    hop = pygame.mixer.Sound(os.path.join("music", "hop.ogg"))
     hop.set_volume(.6)     
-    splash = pygame.mixer.Sound("splash.ogg")
+    splash = pygame.mixer.Sound(os.path.join("music", "splash.ogg"))
     splash.set_volume(.6)  
-    crash = pygame.mixer.Sound("crash.ogg")
+    crash = pygame.mixer.Sound(os.path.join("music", "crash.ogg"))
     crash.set_volume(.6)    
     
     logs = []
