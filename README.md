@@ -15,7 +15,4 @@ Python 2.7
 
 Pygame Library
 
-Run the following file: <tt>Frogger.py<tt>
-
-
-
+Run the following file: <tt>Frogger.py</tt>
