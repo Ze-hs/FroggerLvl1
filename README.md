@@ -11,11 +11,10 @@ Reach the end of the map while avoiding any obstacle before time runs out using:
 <tt>D</tt>
 
 # Getting Started
-To run FroggerLvl, you can clone this Github repository or download it as a zip file to your local machine. Execute Frogger.py with Python 2.7.2 to launch the game.
+To run FroggerLvl, you can clone this Github repository or download it as a zip file to your local machine. Execute <tt>Frogger.py</tt> with Python 2.7.2 to launch the game.
 
 ## Dependencies Needed:
-Python 2.7.2
-
-Pygame 1.9.2 
+- Python 2.7.2
+- Pygame 1.9.2 
 
 
